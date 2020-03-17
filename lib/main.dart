@@ -112,12 +112,12 @@ class _TaskKeeperState extends State<TaskKeeper> {
   Widget taskListTile()
   {
     return Container(
-      height: 90,
+      height: 70,
       margin: EdgeInsets.only(top:20.0),
       // width: 200,
       child: Material(
         shadowColor: Colors.grey,
-        elevation: 4.0,
+        elevation: 8.0,
         child: Row(
           mainAxisAlignment:MainAxisAlignment.start,
           children: <Widget>[
