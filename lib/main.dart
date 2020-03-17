@@ -75,6 +75,7 @@ class _TaskKeeperState extends State<TaskKeeper> {
               left: 16.0,
               right: 16.0,
               child: Container(
+                width: 380,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow:[
@@ -89,17 +90,66 @@ class _TaskKeeperState extends State<TaskKeeper> {
                         )
                   ],
                 ) ,
-                height:MediaQuery.of(context).size.height,
-              child: ListView.builder(
-                itemCount: 2,
-                itemBuilder: (context,index)
-                {
-                  return ListTile(title: Text("I am uzair leo"),);
-                }),
+                height:MediaQuery.of(context).size.height/1.5,
+              child: taskListView(),
               )
               ),
 
           ],
+      ),
+    );
+  }
+  Widget taskListView()
+  {
+    return ListView.builder(
+                itemCount: 12,
+                itemBuilder: (context,index)
+                {
+                  return taskListTile();
+                });
+  }
+
+  Widget taskListTile()
+  {
+    return Container(
+      height: 90,
+      margin: EdgeInsets.only(top:20.0),
+      // width: 200,
+      child: Material(
+        shadowColor: Colors.grey,
+        elevation: 4.0,
+        child: Row(
+          mainAxisAlignment:MainAxisAlignment.start,
+          children: <Widget>[
+            // SizedBox(width:10.0),
+            Container(
+              color:Colors.orange,
+              width:13,
+              // height:
+            ),
+            SizedBox(width:20),
+            Align(
+              alignment:Alignment.topLeft,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children:<Widget>[
+                  Text("Main Title",
+                  style: TextStyle(fontSize: 18.0),),
+                  SizedBox(height:6.0),
+                  Text("Subtitle",
+                  style: TextStyle(fontSize: 14.0))
+                ]
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:150.0),
+              child: Align(
+                alignment:Alignment.centerRight,
+                child:Text("2:24pm")
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
