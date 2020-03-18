@@ -117,7 +117,7 @@ class _TaskKeeperState extends State<TaskKeeper> {
       // width: 200,
       child: Material(
         shadowColor: Colors.grey,
-        elevation: 8.0,
+        elevation: 9.0,
         child: Row(
           mainAxisAlignment:MainAxisAlignment.start,
           children: <Widget>[
