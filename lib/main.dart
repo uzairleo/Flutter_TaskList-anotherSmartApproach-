@@ -214,12 +214,12 @@ class _TaskKeeperState extends State<TaskKeeper> {
                 context: context,
                 builder: (BuildContext context) {
                   return Dialog(
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:<Widget>[
             Text(taskList[indexx]),
               TextField(
-
                 onSubmitted: (value)
                 {
                     addToTask(value);
@@ -229,7 +229,7 @@ class _TaskKeeperState extends State<TaskKeeper> {
                   hintText: title,
                   ),
               ),
-              // FlatButton(onPressed: (){}, child: Text("save"))
+              FlatButton(onPressed: (){}, child: Text("save"))
           ]
         ),
       );
