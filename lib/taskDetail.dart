@@ -25,6 +25,7 @@ class _TaskDetailState extends State<TaskDetail> {
                 onSubmitted: (value)
                 {
                    title=value;
+                   
                 },
                 decoration: InputDecoration(
                   
