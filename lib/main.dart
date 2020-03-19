@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasklist_flutter/addNewTask.dart';
+import 'package:tasklist_flutter/taskDetail.dart';
 
 void main() {
   runApp(new MyTodo());
@@ -29,8 +29,9 @@ class _TaskKeeperState extends State<TaskKeeper> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple,
         onPressed: () {
-           addDilogue(taskList[index],index);
-        // addToTask();
+           addDilogue(
+            //  taskList[index],index
+           );
         // try{
         // removeFromTask(index);
         // }catch(Exception)
@@ -106,27 +107,12 @@ class _TaskKeeperState extends State<TaskKeeper> {
                   ],
                 ),
                 height: MediaQuery.of(context).size.height / 1.5,
-                child:
-                // ListView.builder(
-        // itemBuilder: (context,index)
-        // {
-        
-        //   if(index<taskList.length)
-        //   return listTile(taskList[index],index);
-        // }), 
-                taskListView(),
+                child:taskListView(),
               )),
         ],
       ),
     );
   }
-  // Widget listTile(String title,int index)
-  // {this.index=index;
-  //   return ListTile(
-  //           title: Text(title),
-  //         );
-  // }
-
   Widget taskListView() {
     return ListView.builder(
         // itemCount: 2,
@@ -140,10 +126,12 @@ class _TaskKeeperState extends State<TaskKeeper> {
     this.index=index;
     return GestureDetector(
           onTap: (){
-              addDilogue(title,index);
+              addDilogue(
+                // title,index
+              );
           },
           child: Container(
-        height: 70,
+        height: 75,
         margin: EdgeInsets.only(top: 18.0),
         // width: 200,
         child: Material(
@@ -155,12 +143,11 @@ class _TaskKeeperState extends State<TaskKeeper> {
               // SizedBox(width:10.0),
               Container(
                 color: Colors.orange,
-                width: 13,
+                width: 8,
                 // height:
               ),
               SizedBox(width: 10),
               Expanded(
-                // alignment: Alignment.topLeft,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -208,7 +195,9 @@ class _TaskKeeperState extends State<TaskKeeper> {
   
     });
     }
-    void addDilogue(String title,indexx)
+    void addDilogue(
+      // String title,int index
+      )
     {
       showDialog(
                 context: context,
@@ -218,7 +207,8 @@ class _TaskKeeperState extends State<TaskKeeper> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:<Widget>[
-            Text(taskList[indexx]),
+            // Text(taskList[index]),
+           
               TextField(
                 onSubmitted: (value)
                 {
@@ -226,10 +216,12 @@ class _TaskKeeperState extends State<TaskKeeper> {
                 },
                 decoration: InputDecoration(
                   
-                  hintText: title,
+                  hintText: "title",
                   ),
               ),
-              FlatButton(onPressed: (){}, child: Text("save"))
+              FlatButton(onPressed: (){
+                print(TaskDetail.titleReturn());
+              }, child: Text("save"))
           ]
         ),
       );

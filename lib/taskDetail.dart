@@ -1,30 +1,40 @@
 import 'package:flutter/material.dart';
-
-class AddNewTask extends StatefulWidget {
+ var title;
+class TaskDetail extends StatefulWidget {
+ 
+  static String titleReturn(){
+    // title="uzairleoTitle";
+    return title;
+  }
   @override
-  _AddNewTaskState createState() => _AddNewTaskState();
+  _TaskDetailState createState() => _TaskDetailState();
 }
 
-class _AddNewTaskState extends State<AddNewTask> {
+class _TaskDetailState extends State<TaskDetail> {
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Dialog(
+
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:<Widget>[
+            // Text(taskList[index]),
               TextField(
                 onSubmitted: (value)
                 {
-
+                   title=value;
                 },
                 decoration: InputDecoration(
-                  hintText: "Enter you task..",
+                  
+                  hintText: "title",
                   ),
               ),
+              FlatButton(onPressed: (){}, child: Text("save"))
           ]
         ),
-      ),
+      )
     );
   }
 }
