@@ -10,14 +10,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> taskList=[];
+  // List<String> taskList=[];
   int index;
-    // List<TaskList> taskList=new List();
+    List<TaskList> taskList=new List();
 
     @override
   void initState() {
     super.initState();
-
+      setState(() {
+        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
+        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.yellow));
+        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.brown));
+        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.purple));
+      });
   }
   @override
   Widget build(BuildContext context) {
@@ -117,14 +122,15 @@ class _HomePageState extends State<HomePage> {
   }
   Widget taskListView() {
     return ListView.builder(
-        // itemCount: 2,
+        itemCount: taskList.length,
         itemBuilder: (context, index) {
          if(index<taskList.length)
-          return taskListTile(taskList[index],index);
+          return taskListTile(taskList[index].title,taskList[index].subTitle,
+          taskList[index].taskTime,taskList[index].colorStatus,index);
         });
   }
 
-  Widget taskListTile(String title,int index) {
+  Widget taskListTile(String title,String subtitle,String tasktime,Color tColor,int index) {
     this.index=index;
     return GestureDetector(
           onTap: (){
@@ -144,7 +150,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               // SizedBox(width:10.0),
               Container(
-                color: Colors.deepOrange,
+                color: tColor,
                 width: 8,
                 // height:
               ),
@@ -166,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(height: 4.0),
                       Align(
                         alignment: Alignment.topLeft,
-                        child: Text("Subtitle", style: TextStyle(
+                        child: Text(subtitle, style: TextStyle(
                           fontSize: 18.0)))
                     ]),
               ),
@@ -175,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                       alignment: Alignment.centerRight,
                        child: Padding(
                          padding: const EdgeInsets.only(right:8.0),
-                         child: Text("2:24pm",
+                         child: Text(tasktime,
                       style:TextStyle(fontSize:14),),
                        )),
                 ),
@@ -191,7 +197,9 @@ class _HomePageState extends State<HomePage> {
     int index=taskList.length;
     print("i am ListTile no "+index.toString());
     // taskList.add("Task no =>"+index.toString());
-    taskList.add(value + index.toString());
+    // taskList.add(value + index.toString());
+    taskList.add(new TaskList(title: "prayers",subTitle: "must",
+    taskTime: "23:23pm",colorStatus: Colors.red));
     });
   }
   void removeFromTask(int index)
