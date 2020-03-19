@@ -29,8 +29,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple,
         onPressed: () {
-           addDilogue(
-           );
+           addDilogue();
         // try{
         // removeFromTask(index);
         // }catch(Exception)
@@ -123,6 +122,7 @@ class _HomePageState extends State<HomePage> {
         itemCount: taskList.length,
         itemBuilder: (context, index) {
          if(index<taskList.length)
+         print(index);
           return taskListTile(taskList[index].title,taskList[index].subTitle,
           taskList[index].taskTime,taskList[index].colorStatus,index);
         });
@@ -132,14 +132,11 @@ class _HomePageState extends State<HomePage> {
     this.index=index;
     return GestureDetector(
           onTap: (){
-              addDilogue(
-                // title,index
-              );
+              addDilogue();
           },
           child: Container(
         height: 75,
         margin: EdgeInsets.only(top: 18.0),
-        // width: 200,
         child: Material(
           shadowColor: Colors.grey,
           elevation: 9.0,
@@ -178,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                               child: Align(
                       alignment: Alignment.centerRight,
                        child: Padding(
-                         padding: const EdgeInsets.only(right:8.0),
+                         padding: const EdgeInsets.only(right:6.0),
                          child: Text(tasktime,
                       style:TextStyle(fontSize:14),),
                        )),
@@ -194,8 +191,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
     int index=taskList.length;
     print("i am ListTile no "+index.toString());
-    // taskList.add("Task no =>"+index.toString());
-    // taskList.add(value + index.toString());
     taskList.add(new TaskList(title: value,subTitle: "must",
     taskTime: "23:23pm",colorStatus: Colors.red));
     });
@@ -208,9 +203,7 @@ class _HomePageState extends State<HomePage> {
   
     });
     }
-    void addDilogue(
-      // String title,int index
-      )
+    void addDilogue()
     {
       var titleController=TextEditingController();
       showDialog(
