@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasklist_flutter/taskList.dart';
-
+import 'package:intl/intl.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -9,7 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
+var day=DateFormat.d().format(DateTime.now());
+var month=DateFormat.MMMM().format(DateTime.now());
+var year=DateFormat.y().format(DateTime.now());
   int index;
     List<TaskList> taskList=new List();
 
@@ -29,20 +31,14 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple,
         onPressed: () {
+        try{
            addDilogue();
-        // try{
         // removeFromTask(index);
-        // }catch(Exception)
-        // {
+        }catch(Exception)
+        {
         //   print("Sorry Invalid index");
-        // }
+        }
         
-          // showDialog(context: context,
-          // builder:(BuildContext context)=>TaskDetail());
-        // Future.delayed(Duration(seconds: 6),(){
-            // addToTask(TaskDetail.titleReturn());
-        // });
-    
         },
         child: Icon(Icons.add,color: Colors.black,),
       ),
@@ -53,8 +49,8 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
+            IconButton(icon: Icon(Icons.search), onPressed: () {}),
             IconButton(icon: Icon(Icons.settings), onPressed: () {}),
-            IconButton(icon: Icon(Icons.verified_user), onPressed: () {}),
           ],
         ),
       ),
@@ -82,11 +78,11 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.centerLeft,
               child: ListTile(
                 leading: Text(
-                  "12",
+                 day,
                   style: TextStyle(fontSize: 48,color: Colors.yellow),
                 ),
-                title: Text("March",style: TextStyle(fontSize: 28),),
-                subtitle: Text("2020",style: TextStyle(fontSize: 21),),
+                title: Text(month,style: TextStyle(fontSize: 28),),
+                subtitle: Text(year,style: TextStyle(fontSize: 21),),
               ),
             ),
           ),
