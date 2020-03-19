@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasklist_flutter/taskDetail.dart';
+import 'package:tasklist_flutter/taskList.dart';
 
 
 
@@ -11,6 +12,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<String> taskList=[];
   int index;
+    // List<TaskList> taskList=new List();
+
+    @override
+  void initState() {
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,6 +150,7 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(width: 10),
               Expanded(
+                flex: 4,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -151,21 +160,25 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           title,
                           style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.bold),
+                              fontSize: 21.0, fontWeight: FontWeight.bold),
                         ),
                       ),
                       SizedBox(height: 4.0),
                       Align(
                         alignment: Alignment.topLeft,
-                        child: Text("Subtitle", style: TextStyle(fontSize: 18.0)))
+                        child: Text("Subtitle", style: TextStyle(
+                          fontSize: 18.0)))
                     ]),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 140.0,right:10.0),
-                child: Align(
-                    alignment: Alignment.centerRight, child: Text("2:24pm",
-                    style:TextStyle(fontSize:14),)),
-              )
+              Expanded(
+                              child: Align(
+                      alignment: Alignment.centerRight,
+                       child: Padding(
+                         padding: const EdgeInsets.only(right:8.0),
+                         child: Text("2:24pm",
+                      style:TextStyle(fontSize:14),),
+                       )),
+                ),
             ],
           ),
         ),
