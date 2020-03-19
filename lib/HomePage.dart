@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tasklist_flutter/taskDetail.dart';
 import 'package:tasklist_flutter/taskList.dart';
 
 
@@ -10,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // List<String> taskList=[];
+  
   int index;
     List<TaskList> taskList=new List();
 
@@ -31,7 +30,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.purple,
         onPressed: () {
            addDilogue(
-            //  taskList[index],index
            );
         // try{
         // removeFromTask(index);
@@ -198,7 +196,7 @@ class _HomePageState extends State<HomePage> {
     print("i am ListTile no "+index.toString());
     // taskList.add("Task no =>"+index.toString());
     // taskList.add(value + index.toString());
-    taskList.add(new TaskList(title: "prayers",subTitle: "must",
+    taskList.add(new TaskList(title: value,subTitle: "must",
     taskTime: "23:23pm",colorStatus: Colors.red));
     });
   }
@@ -214,6 +212,7 @@ class _HomePageState extends State<HomePage> {
       // String title,int index
       )
     {
+      var titleController=TextEditingController();
       showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -225,9 +224,10 @@ class _HomePageState extends State<HomePage> {
             // Text(taskList[index]),
            
               TextField(
+                controller: titleController,
                 onSubmitted: (value)
                 {
-                    addToTask(value);
+                    // addToTask(value);
                 },
                 decoration: InputDecoration(
                   
@@ -235,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                   ),
               ),
               FlatButton(onPressed: (){
-                print(TaskDetail.titleReturn());
+                addToTask(titleController.text);
               }, child: Text("save"))
           ]
         ),
