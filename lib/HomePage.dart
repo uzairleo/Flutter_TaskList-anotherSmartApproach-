@@ -17,11 +17,6 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple,
         onPressed: () {
-          // showDialog(context: context,
-          // builder:(BuildContext context)=>TaskDetail());
-        // Future.delayed(Duration(seconds: 6),(){
-            // addToTask(TaskDetail.titleReturn());
-        // });
            addDilogue(
             //  taskList[index],index
            );
@@ -31,6 +26,12 @@ class _HomePageState extends State<HomePage> {
         // {
         //   print("Sorry Invalid index");
         // }
+        
+          // showDialog(context: context,
+          // builder:(BuildContext context)=>TaskDetail());
+        // Future.delayed(Duration(seconds: 6),(){
+            // addToTask(TaskDetail.titleReturn());
+        // });
     
         },
         child: Icon(Icons.add,color: Colors.black,),
@@ -135,7 +136,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               // SizedBox(width:10.0),
               Container(
-                color: Colors.orange,
+                color: Colors.deepOrange,
                 width: 8,
                 // height:
               ),
