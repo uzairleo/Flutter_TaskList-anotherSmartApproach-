@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasklist_flutter/newTaskPage.dart';
 import 'package:tasklist_flutter/taskList.dart';
 import 'package:intl/intl.dart';
 
@@ -205,30 +206,31 @@ var year=DateFormat.y().format(DateTime.now());
       showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return Dialog(
+                  return NewTaskPage();
+      //              Dialog(
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:<Widget>[
-            // Text(taskList[index]),
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children:<Widget>[
+      //       // Text(taskList[index]),
            
-              TextField(
-                controller: titleController,
-                onSubmitted: (value)
-                {
-                    // addToTask(value);
-                },
-                decoration: InputDecoration(
+      //         TextField(
+      //           controller: titleController,
+      //           onSubmitted: (value)
+      //           {
+      //               // addToTask(value);
+      //           },
+      //           decoration: InputDecoration(
                   
-                  hintText: "title",
-                  ),
-              ),
-              FlatButton(onPressed: (){
-                addToTask(titleController.text);
-              }, child: Text("save"))
-          ]
-        ),
-      );
+      //             hintText: "title",
+      //             ),
+      //         ),
+      //         FlatButton(onPressed: (){
+      //           addToTask(titleController.text);
+      //         }, child: Text("save"))
+      //     ]
+      //   ),
+      // );
       }
       );
       
