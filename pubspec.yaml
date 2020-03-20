@@ -26,7 +26,7 @@ dependencies:
   intl: any
   font_awesome_flutter: any
   flutter_spinkit: any
-
+  fluttertoast: any  
 dev_dependencies:
   flutter_test:
     sdk: flutter

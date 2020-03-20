@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tasklist_flutter/newTaskPage.dart';
 import 'package:tasklist_flutter/taskList.dart';
@@ -128,7 +129,23 @@ var year=DateFormat.y().format(DateTime.now());
             onDismissed: (direction){
               if(direction==DismissDirection.startToEnd)
               {
+
+                    Fluttertoast.showToast(
+                      msg: "task Deleted",
+                      backgroundColor: Colors.black54,
+                      gravity: ToastGravity.CENTER,
+                      textColor: Colors.white,
+                      fontSize: 18.0,
+                      toastLength: Toast.LENGTH_SHORT,
+                      timeInSecForIos: 1,
+
+                      );
+                      Future.delayed(Duration(seconds: 2),
+                      (){
+                        
                     print("DELETE>.....");
+                          Fluttertoast.cancel();
+                      });
               }else
               if(direction==DismissDirection.endToStart)
               {
@@ -144,23 +161,26 @@ var year=DateFormat.y().format(DateTime.now());
   }
   hiddenContainer(Color taskcolor)
   {
-    return Container(
-              color: taskcolor??Colors.yellow,
-              height:MediaQuery.of(context).size.height,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Align(
-                    alignment:Alignment.centerLeft,
-                    child:Icon(FontAwesomeIcons.trash),
-                  ),
-                  Align(
-                    alignment:Alignment.centerLeft,
-                    child:Icon(FontAwesomeIcons.edit),
-                  )
-                ],
+    return Padding(
+      padding: const EdgeInsets.only(top:16.0,bottom: 0.0),
+      child: Container(
+                color: taskcolor??Colors.yellow,
+                height:MediaQuery.of(context).size.height,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Align(
+                      alignment:Alignment.centerLeft,
+                      child:Icon(FontAwesomeIcons.trash),
+                    ),
+                    Align(
+                      alignment:Alignment.centerLeft,
+                      child:Icon(FontAwesomeIcons.edit),
+                    )
+                  ],
+                ),
               ),
-            );
+    );
   }
   Widget taskListTile(String title,String subtitle,String tasktime,Color tColor,int index) {
     this.index=index;
