@@ -246,6 +246,5 @@ var year=DateFormat.y().format(DateTime.now());
                   NewTaskPage(taskList);
      }
       );
-      
     }
 }
