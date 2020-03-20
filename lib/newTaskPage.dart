@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tasklist_flutter/HomePage.dart';
+import 'package:tasklist_flutter/taskList.dart';
 
 class NewTaskPage extends StatefulWidget {
   @override
@@ -7,6 +9,10 @@ class NewTaskPage extends StatefulWidget {
 }
 
 class _NewTaskPageState extends State<NewTaskPage> {
+  var title=TextEditingController();
+  var subtitle=TextEditingController();
+  var tasktime=TextEditingController();
+  var tasColor;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -23,7 +29,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
             Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextField(
-                    controller: null,
+                    controller: title,
                     decoration: InputDecoration(
                       hintText: "title",
                       border: InputBorder.none,
@@ -31,7 +37,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
             Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextField(
-                    controller: null,
+                    controller: subtitle,
                     decoration: InputDecoration(
                       hintText: "subTitle",
                       border: InputBorder.none,
@@ -67,7 +73,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
             Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: TextField(
-                    controller: null,
+                    controller: tasktime,
                     decoration: InputDecoration(
                       hintText: "taskTime",
                       border: InputBorder.none,
@@ -83,7 +89,14 @@ class _NewTaskPageState extends State<NewTaskPage> {
   {
     return RaisedButton(
       onPressed: (){
-
+          setState(() {
+            taskList.add(new TaskList(
+              title: title.text,
+              subTitle: subtitle.text,
+              taskTime: tasktime.text,
+              colorStatus: tasColor
+            ));
+          });
       },
       shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(30.0)),
       child: Text("Add",style: TextStyle(color: Colors.white,fontSize: 18),),
@@ -94,7 +107,9 @@ class _NewTaskPageState extends State<NewTaskPage> {
 
   colorContainer(var color) {
     return GestureDetector(
-        onTap: () {},
+        onTap: () {
+          
+        },
         child: Icon(
           FontAwesomeIcons.squareFull,
           size: 20,

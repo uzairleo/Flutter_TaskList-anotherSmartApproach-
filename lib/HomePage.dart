@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tasklist_flutter/newTaskPage.dart';
 import 'package:tasklist_flutter/taskList.dart';
 import 'package:intl/intl.dart';
+    List<TaskList> taskList=new List();
 
 
 class HomePage extends StatefulWidget {
@@ -14,16 +16,17 @@ var day=DateFormat.d().format(DateTime.now());
 var month=DateFormat.MMMM().format(DateTime.now());
 var year=DateFormat.y().format(DateTime.now());
   int index;
-    List<TaskList> taskList=new List();
 
+      var title=TextEditingController();
+  var subtitle=TextEditingController();
+  var tasktime=TextEditingController();
+  var tasColor;
     @override
   void initState() {
     super.initState();
       setState(() {
         // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
         // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.yellow));
-        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.brown));
-        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.purple));
       });
   }
   @override
@@ -202,11 +205,81 @@ var year=DateFormat.y().format(DateTime.now());
     }
     void addDilogue()
     {
-      var titleController=TextEditingController();
+      // var titleController=TextEditingController();
       showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return NewTaskPage();
+                  return 
+                  // NewTaskPage();
+                  AlertDialog(
+      elevation: 8.0,
+      title: Text(
+        "New Task",
+        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+      ),
+      content: Container(
+        height: 300,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: TextField(
+                    controller: title,
+                    decoration: InputDecoration(
+                      hintText: "title",
+                      border: InputBorder.none,
+                    ))),
+            Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: TextField(
+                    controller: subtitle,
+                    decoration: InputDecoration(
+                      hintText: "subTitle",
+                      border: InputBorder.none,
+                    ))),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Container(
+                height: 40,
+                child: Column(children: <Widget>[
+                  // Padding(
+                  //     padding: const EdgeInsets.only(top: 2.0),
+                  //     child:
+                  //     Text(
+                  //       "Select Color",
+                  //       style: TextStyle(fontSize: 18.0),
+                  //     )),
+                  Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          colorContainer(Colors.amber),
+                          colorContainer(Colors.blue),
+                          colorContainer(Colors.red),
+                          colorContainer(Colors.orange),
+                        ],
+                      ))
+                ]),
+              ),
+            ),
+            
+            Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: TextField(
+                    controller: tasktime,
+                    decoration: InputDecoration(
+                      hintText: "taskTime",
+                      border: InputBorder.none,
+                    ))),
+                    Padding(padding: const EdgeInsets.only(top: 45,right: 14.0,left: 150),
+                    child:saveButton())
+          ],
+        ),
+      ),
+    );
       //              Dialog(
 
       //   child: Column(
@@ -235,4 +308,39 @@ var year=DateFormat.y().format(DateTime.now());
       );
       
     }
+    
+  saveButton()
+  {
+    return RaisedButton(
+      onPressed: (){
+          setState(() {
+            taskList.add(new TaskList(
+              title: title.text,
+              subTitle: subtitle.text,
+              taskTime: tasktime.text,
+              colorStatus: tasColor
+            ));
+            Navigator.of(context).pop();
+          });
+      },
+      shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(30.0)),
+      child: Text("Add",style: TextStyle(color: Colors.white,fontSize: 18),),
+      color: Colors.pink,
+      colorBrightness: Brightness.dark,
+      );
+  }
+
+  colorContainer(var color) {
+    return GestureDetector(
+        onTap: () {
+        setState(() {
+          tasColor=color;
+        });
+        },
+        child: Icon(
+          FontAwesomeIcons.squareFull,
+          size: 20,
+          color: color,
+        ));
+  }
 }
