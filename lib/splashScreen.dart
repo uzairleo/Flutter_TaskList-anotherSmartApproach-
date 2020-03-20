@@ -65,14 +65,14 @@ class _SplashScreenState extends State<SplashScreen> {
           Padding(padding: const EdgeInsets.only(top: 80,bottom: 10),
           child:SpinKitDoubleBounce(color: Colors.white54,size: 60,),),
           Padding(padding: const EdgeInsets.only(top: 70.0),
-          child:Text("Version 1.0",style: TextStyle(
-            fontSize: 12.0,
+          child:Text("Version 2.0",style: TextStyle(
+            fontSize: 14.0,
             color:Colors.white70,
           ),)
           ),
             Text("@2020 uzairleo  ",style: TextStyle(
             fontSize: 12.0,
-            color:Colors.white60,
+            color:Colors.white70,
           ))
         ]
       ),
