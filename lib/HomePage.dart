@@ -26,8 +26,8 @@ var year=DateFormat.y().format(DateTime.now());
   void initState() {
     super.initState();
       setState(() {
-        taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
-        taskList.add(new TaskList(title: "wakeup",subTitle: "Must do ",taskTime: "1:23pm",colorStatus: Colors.yellow));
+        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
+        // taskList.add(new TaskList(title: "wakeup",subTitle: "Must do ",taskTime: "1:23pm",colorStatus: Colors.yellow));
       });
   }
   @override
@@ -124,11 +124,44 @@ var year=DateFormat.y().format(DateTime.now());
         itemBuilder: (context, index) {
         //  if(index<taskList.length)
          print(index);
-          return taskListTile(taskList[index].title,taskList[index].subTitle,
-          taskList[index].taskTime,taskList[index].colorStatus,index);
+          return Dismissible(
+            onDismissed: (direction){
+              if(direction==DismissDirection.startToEnd)
+              {
+                    print("DELETE>.....");
+              }else
+              if(direction==DismissDirection.endToStart)
+              {
+                  print("Edit");
+              }
+            },
+            key: Key(taskList[index].toString()),
+            background: hiddenContainer(taskList[index].colorStatus),
+                      child: taskListTile(taskList[index].title,taskList[index].subTitle,
+            taskList[index].taskTime,taskList[index].colorStatus,index),
+          );
         });
   }
-
+  hiddenContainer(Color taskcolor)
+  {
+    return Container(
+              color: taskcolor??Colors.yellow,
+              height:MediaQuery.of(context).size.height,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Align(
+                    alignment:Alignment.centerLeft,
+                    child:Icon(FontAwesomeIcons.trash),
+                  ),
+                  Align(
+                    alignment:Alignment.centerLeft,
+                    child:Icon(FontAwesomeIcons.edit),
+                  )
+                ],
+              ),
+            );
+  }
   Widget taskListTile(String title,String subtitle,String tasktime,Color tColor,int index) {
     this.index=index;
     return GestureDetector(
@@ -211,105 +244,8 @@ var year=DateFormat.y().format(DateTime.now());
                 builder: (BuildContext context) {
                   return 
                   NewTaskPage(taskList);
-    //               AlertDialog(
-    //   elevation: 8.0,
-    //   title: Text(
-    //     "New Task",
-    //     style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-    //   ),
-    //   content: Container(
-    //     height: 300,
-    //     child: ListView(
-    //       // mainAxisAlignment: MainAxisAlignment.start,
-    //       children: <Widget>[
-    //         Padding(
-    //             padding: const EdgeInsets.only(top: 8.0),
-    //             child: TextField(
-    //                 controller: title,
-    //                 decoration: InputDecoration(
-    //                   hintText: "title",
-    //                   border: InputBorder.none,
-    //                 ))),
-    //         Padding(
-    //             padding: const EdgeInsets.only(top: 8.0),
-    //             child: TextField(
-    //                 controller: subtitle,
-    //                 decoration: InputDecoration(
-    //                   hintText: "subTitle",
-    //                   border: InputBorder.none,
-    //                 ))),
-    //         Padding(
-    //           padding: const EdgeInsets.only(top: 10.0),
-    //           child: Container(
-    //             height: 40,
-    //             child: Column(children: <Widget>[
-    //               Padding(
-    //                   padding: const EdgeInsets.only(top: 10.0),
-    //                   child: Row(
-
-    //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                     children: <Widget>[
-    //                       colorContainer(Colors.amber),
-    //                       colorContainer(Colors.blue),
-    //                       colorContainer(Colors.red),
-    //                       colorContainer(Colors.orange),
-    //                     ],
-    //                   ))
-    //             ]),
-    //           ),
-    //         ),
-            
-    //         Padding(
-    //             padding: const EdgeInsets.only(top: 8.0),
-    //             child: TextField(
-    //                 controller: tasktime,
-    //                 decoration: InputDecoration(
-    //                   hintText: "taskTime",
-    //                   border: InputBorder.none,
-    //                 ))),
-    //                 Padding(padding: const EdgeInsets.only(top: 45,right: 14.0,left: 150),
-    //                 child:saveButton())
-    //       ],
-    //     ),
-    //   ),
-    // );
-      }
+     }
       );
       
     }
-    
-  saveButton()
-  {
-    return RaisedButton(
-      onPressed: (){
-          setState(() {
-            taskList.add(new TaskList(
-              title: title.text,
-              subTitle: subtitle.text,
-              taskTime: tasktime.text,
-              colorStatus: tasColor
-            ));
-            Navigator.of(context).pop();
-          });
-      },
-      shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(30.0)),
-      child: Text("Add",style: TextStyle(color: Colors.white,fontSize: 18),),
-      color: Colors.pink,
-      colorBrightness: Brightness.dark,
-      );
-  }
-
-  colorContainer(var color) {
-    return GestureDetector(
-        onTap: () {
-        setState(() {
-          tasColor=color;
-        });
-        },
-        child: Icon(
-          FontAwesomeIcons.squareFull,
-          size: 20,
-          color: color,
-        ));
-  }
 }

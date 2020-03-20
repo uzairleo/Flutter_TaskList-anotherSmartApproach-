@@ -74,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
             fontSize: 12.0,
             color:Colors.white70,
           ))
-        ]
+        ],
       ),
   ),
     );  }
