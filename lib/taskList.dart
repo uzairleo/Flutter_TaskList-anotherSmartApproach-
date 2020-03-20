@@ -5,7 +5,7 @@ class TaskList {
 
 String title;
 String subTitle;
-String taskTime;
+var taskTime;
 Color colorStatus;
 TaskList({this.title,this.subTitle,this.taskTime,this.colorStatus});
 }
