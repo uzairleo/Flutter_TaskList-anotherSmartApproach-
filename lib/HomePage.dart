@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tasklist_flutter/newTaskPage.dart';
 import 'package:tasklist_flutter/taskList.dart';
 import 'package:intl/intl.dart';
-    List<TaskList> taskList=new List();
 
 
 class HomePage extends StatefulWidget {
@@ -16,6 +15,8 @@ var day=DateFormat.d().format(DateTime.now());
 var month=DateFormat.MMMM().format(DateTime.now());
 var year=DateFormat.y().format(DateTime.now());
   int index;
+  
+    List<TaskList> taskList=new List();
 
       var title=TextEditingController();
   var subtitle=TextEditingController();
@@ -25,8 +26,8 @@ var year=DateFormat.y().format(DateTime.now());
   void initState() {
     super.initState();
       setState(() {
-        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
-        // taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.yellow));
+        taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
+        taskList.add(new TaskList(title: "wakeup",subTitle: "Must do ",taskTime: "1:23pm",colorStatus: Colors.yellow));
       });
   }
   @override
@@ -53,8 +54,8 @@ var year=DateFormat.y().format(DateTime.now());
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            IconButton(icon: Icon(Icons.search), onPressed: () {}),
-            IconButton(icon: Icon(Icons.settings), onPressed: () {}),
+            IconButton(icon: Icon(FontAwesomeIcons.user,), onPressed: () {}),
+            IconButton(icon: Icon(FontAwesomeIcons.search), onPressed: () {}),
           ],
         ),
       ),
@@ -121,7 +122,7 @@ var year=DateFormat.y().format(DateTime.now());
     return ListView.builder(
         itemCount: taskList.length,
         itemBuilder: (context, index) {
-         if(index<taskList.length)
+        //  if(index<taskList.length)
          print(index);
           return taskListTile(taskList[index].title,taskList[index].subTitle,
           taskList[index].taskTime,taskList[index].colorStatus,index);
@@ -205,105 +206,73 @@ var year=DateFormat.y().format(DateTime.now());
     }
     void addDilogue()
     {
-      // var titleController=TextEditingController();
       showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return 
-                  // NewTaskPage();
-                  AlertDialog(
-      elevation: 8.0,
-      title: Text(
-        "New Task",
-        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-      ),
-      content: Container(
-        height: 300,
-        child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: TextField(
-                    controller: title,
-                    decoration: InputDecoration(
-                      hintText: "title",
-                      border: InputBorder.none,
-                    ))),
-            Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: TextField(
-                    controller: subtitle,
-                    decoration: InputDecoration(
-                      hintText: "subTitle",
-                      border: InputBorder.none,
-                    ))),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Container(
-                height: 40,
-                child: Column(children: <Widget>[
-                  // Padding(
-                  //     padding: const EdgeInsets.only(top: 2.0),
-                  //     child:
-                  //     Text(
-                  //       "Select Color",
-                  //       style: TextStyle(fontSize: 18.0),
-                  //     )),
-                  Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Row(
+                  NewTaskPage(taskList);
+    //               AlertDialog(
+    //   elevation: 8.0,
+    //   title: Text(
+    //     "New Task",
+    //     style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+    //   ),
+    //   content: Container(
+    //     height: 300,
+    //     child: ListView(
+    //       // mainAxisAlignment: MainAxisAlignment.start,
+    //       children: <Widget>[
+    //         Padding(
+    //             padding: const EdgeInsets.only(top: 8.0),
+    //             child: TextField(
+    //                 controller: title,
+    //                 decoration: InputDecoration(
+    //                   hintText: "title",
+    //                   border: InputBorder.none,
+    //                 ))),
+    //         Padding(
+    //             padding: const EdgeInsets.only(top: 8.0),
+    //             child: TextField(
+    //                 controller: subtitle,
+    //                 decoration: InputDecoration(
+    //                   hintText: "subTitle",
+    //                   border: InputBorder.none,
+    //                 ))),
+    //         Padding(
+    //           padding: const EdgeInsets.only(top: 10.0),
+    //           child: Container(
+    //             height: 40,
+    //             child: Column(children: <Widget>[
+    //               Padding(
+    //                   padding: const EdgeInsets.only(top: 10.0),
+    //                   child: Row(
 
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          colorContainer(Colors.amber),
-                          colorContainer(Colors.blue),
-                          colorContainer(Colors.red),
-                          colorContainer(Colors.orange),
-                        ],
-                      ))
-                ]),
-              ),
-            ),
+    //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                     children: <Widget>[
+    //                       colorContainer(Colors.amber),
+    //                       colorContainer(Colors.blue),
+    //                       colorContainer(Colors.red),
+    //                       colorContainer(Colors.orange),
+    //                     ],
+    //                   ))
+    //             ]),
+    //           ),
+    //         ),
             
-            Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: TextField(
-                    controller: tasktime,
-                    decoration: InputDecoration(
-                      hintText: "taskTime",
-                      border: InputBorder.none,
-                    ))),
-                    Padding(padding: const EdgeInsets.only(top: 45,right: 14.0,left: 150),
-                    child:saveButton())
-          ],
-        ),
-      ),
-    );
-      //              Dialog(
-
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children:<Widget>[
-      //       // Text(taskList[index]),
-           
-      //         TextField(
-      //           controller: titleController,
-      //           onSubmitted: (value)
-      //           {
-      //               // addToTask(value);
-      //           },
-      //           decoration: InputDecoration(
-                  
-      //             hintText: "title",
-      //             ),
-      //         ),
-      //         FlatButton(onPressed: (){
-      //           addToTask(titleController.text);
-      //         }, child: Text("save"))
-      //     ]
-      //   ),
-      // );
+    //         Padding(
+    //             padding: const EdgeInsets.only(top: 8.0),
+    //             child: TextField(
+    //                 controller: tasktime,
+    //                 decoration: InputDecoration(
+    //                   hintText: "taskTime",
+    //                   border: InputBorder.none,
+    //                 ))),
+    //                 Padding(padding: const EdgeInsets.only(top: 45,right: 14.0,left: 150),
+    //                 child:saveButton())
+    //       ],
+    //     ),
+    //   ),
+    // );
       }
       );
       

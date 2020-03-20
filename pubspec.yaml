@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   intl: any
   font_awesome_flutter: any
+  flutter_spinkit: any
 
 dev_dependencies:
   flutter_test:

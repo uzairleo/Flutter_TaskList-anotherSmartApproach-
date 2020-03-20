@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tasklist_flutter/HomePage.dart';
 import 'package:tasklist_flutter/taskList.dart';
 
 class NewTaskPage extends StatefulWidget {
+ List<TaskList> taskList=List();
+  NewTaskPage(this.taskList);
   @override
-  _NewTaskPageState createState() => _NewTaskPageState();
+  _NewTaskPageState createState() => _NewTaskPageState(taskList);
 }
 
 class _NewTaskPageState extends State<NewTaskPage> {
+  List<TaskList> taskList=List();
+  _NewTaskPageState(this.taskList);
   var title=TextEditingController();
   var subtitle=TextEditingController();
   var tasktime=TextEditingController();
@@ -47,14 +50,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
               child: Container(
                 height: 40,
                 child: Column(children: <Widget>[
-                  // Padding(
-                  //     padding: const EdgeInsets.only(top: 2.0),
-                  //     child:
-                  //     Text(
-                  //       "Select Color",
-                  //       style: TextStyle(fontSize: 18.0),
-                  //     )),
-                  Padding(
+                 Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Row(
 
@@ -89,14 +85,14 @@ class _NewTaskPageState extends State<NewTaskPage> {
   {
     return RaisedButton(
       onPressed: (){
-          setState(() {
             taskList.add(new TaskList(
               title: title.text,
               subTitle: subtitle.text,
               taskTime: tasktime.text,
               colorStatus: tasColor
             ));
-          });
+            Navigator.of(context).pop();
+         
       },
       shape: RoundedRectangleBorder(borderRadius:new BorderRadius.circular(30.0)),
       child: Text("Add",style: TextStyle(color: Colors.white,fontSize: 18),),
@@ -108,7 +104,9 @@ class _NewTaskPageState extends State<NewTaskPage> {
   colorContainer(var color) {
     return GestureDetector(
         onTap: () {
-          
+        setState(() {
+          tasColor=color;
+        });
         },
         child: Icon(
           FontAwesomeIcons.squareFull,
