@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasklist_flutter/HomePage.dart';
-import 'package:tasklist_flutter/splashScreen.dart';
+import 'package:tasklist_flutter/screens/splashScreen.dart';
 
 void main() {
   runApp(new MyTodo());

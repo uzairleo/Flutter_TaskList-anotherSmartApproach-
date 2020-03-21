@@ -2,7 +2,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:tasklist_flutter/taskList.dart';
+import 'package:tasklist_flutter/models/taskList.dart';
 
 class NewTaskPage extends StatefulWidget {
  List<TaskList> taskList=List();

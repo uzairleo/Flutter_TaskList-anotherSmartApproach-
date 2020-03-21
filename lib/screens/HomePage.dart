@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tasklist_flutter/newTaskPage.dart';
-import 'package:tasklist_flutter/taskList.dart';
+import 'package:tasklist_flutter/screens/newTaskPage.dart';
+import 'package:tasklist_flutter/models/taskList.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
