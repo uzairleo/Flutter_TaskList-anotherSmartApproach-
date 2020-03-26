@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                 // });
               } else if (direction == DismissDirection.endToStart) {
                 print("Edit");
-                addDilogue();
+                addDilogue(index);
               }
             },
             key: ValueKey(taskList[index].toString()),
@@ -280,11 +280,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void addDilogue() {
+  void addDilogue([int index]) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return NewTaskPage(taskList);
+          return NewTaskPage(taskList,index);
         });
   }
   updateListview()

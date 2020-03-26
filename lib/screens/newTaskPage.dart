@@ -1,19 +1,24 @@
+import 'dart:io';
+
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tasklist_flutter/models/taskList.dart';
 
 class NewTaskPage extends StatefulWidget {
  List<TaskList> taskList=List();
-  NewTaskPage(this.taskList);
+ int index;
+  NewTaskPage(this.taskList,this.index);
   @override
-  _NewTaskPageState createState() => _NewTaskPageState(taskList);
+  _NewTaskPageState createState() => _NewTaskPageState(taskList,index);
 }
 
 class _NewTaskPageState extends State<NewTaskPage> {
   List<TaskList> taskList=List();
-  _NewTaskPageState(this.taskList);
+  int index;
+  _NewTaskPageState(this.taskList,this.index);
   var title=TextEditingController();
   var subtitle=TextEditingController();
   var tasktime=TextEditingController();
@@ -22,6 +27,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      key: ValueKey(taskList[index]),
       elevation: 8.0,
       title: Text(
         "New Task",
@@ -155,4 +161,35 @@ class _NewTaskPageState extends State<NewTaskPage> {
                   ),
         );
   }
+
+  //Writting the ListTile Data to a local file there in each os device
+  _save()
+  async{
+    try{
+    final Directory  filePath=await getApplicationDocumentsDirectory();
+    final  File writeFile=File("${filePath.path}/leoTask.text");
+      String wData="My name is Muhammad Uzair";
+      print(filePath);
+    writeFile.writeAsStringSync(wData);
+    }catch(Exception)
+    {
+      print("some Error Happened");
+    }
+  }
+
+//a function that read ListTile data from that local file 
+_read()
+async{
+  try{
+
+    final Directory getPath= await getApplicationDocumentsDirectory();
+    final File readFile=File("${getPath.path}/leoTask.text");
+    String readText=readFile.readAsStringSync();
+    print(readText);
+
+  }catch(Exception)
+  {
+    print("Some Error Happened");
+  }
+}
 }
