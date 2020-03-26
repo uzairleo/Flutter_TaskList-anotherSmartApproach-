@@ -28,7 +28,7 @@ dependencies:
   flutter_spinkit: any
   fluttertoast: any  
   datetime_picker_formfield: any
-  
+  path_provider: any
 
 dev_dependencies:
   flutter_test:
