@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     setState(() {
-      updateListview();
+      // updateListview();
       taskList.add(new TaskList(title: "dinner",subTitle: "Must do ",taskTime: "2:23pm",colorStatus: Colors.orange));
       taskList.add(new TaskList(title: "wakeup",subTitle: "Must do ",taskTime: "1:23pm",colorStatus: Colors.yellow));
     
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget taskListView() {
     return ListView.builder(
-        itemCount:updateListview(),
+        itemCount: taskList.length,//updateListview(),
         itemBuilder: (context, index) {
           //  if(index<taskList.length)
           print(index);
@@ -293,4 +293,5 @@ class _HomePageState extends State<HomePage> {
     this.count=count;
     return this.count;
   }
+
 }

@@ -27,7 +27,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      key: ValueKey(taskList[index]),
+      // key: ValueKey(taskList[index].toString()),
       elevation: 8.0,
       title: Text(
         "New Task",
