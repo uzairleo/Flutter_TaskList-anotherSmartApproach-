@@ -1,7 +1,8 @@
 # tasklist_flutter
 
-A new Flutter project.
+A taskList or todo List ui without database implementation
 
+![](taskList.gif)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
