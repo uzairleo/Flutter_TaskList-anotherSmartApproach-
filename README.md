@@ -1,6 +1,6 @@
 # tasklist_flutter
 
-A taskList or todo List ui without database implementation
+ - A taskList or todo List ui without database implementation
 
 ![](taskList.gif)
 ## Getting Started
